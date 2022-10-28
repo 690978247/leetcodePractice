@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+// 1
+var findNumberIn2DArray = function(matrix, target) {
+    matrix = matrix.flat(Infinity)
+    return matrix.includes(target)
+}
+
+// 2
+var findNumberIn2DArray2 = function(matrix, target) {
+    if(matrix.length === 0) {
+        return false
+    }
+    // 从左下角数据开始
+    let i = matrix.length - 1  //获取最下面的那个数组 i 从index - 1 开始
+    let j = 0  //获取数组内容长度 j从0开始
+    while(i >= 0 && j < matrix[0].length) { // 当i > 0 并且j 小于等于内部一维数组的长度进行循环
+        if (matrix[i][j] > target) i-- // 由题可知 内部一维数组是递增的， 所以最左侧的值是最小的，若matrix[i][j] > target 则i-- 消去行,进入下一层循环
+        else if (matrix[i][j] < target) j++ // 若matrix[i][j] < target 则j++ 消去列,进入下一层循环
+        else return true // 若能找到，返回true
+    }
+    return false    // 未找到，返回true
+}
+
+var answer =  findNumberIn2DArray2([[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], 5)
+console.log(answer)
+
+</script>
+</html>

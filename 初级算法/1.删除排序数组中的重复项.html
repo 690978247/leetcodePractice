@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+// 1.
+var removeDuplicates = function(nums) {
+    if (nums === null || nums.length === 0) return 0
+    let i = 0
+    for(j = 1; j < nums.length; j++ ) {
+        if (nums[i] !== nums[j]) {
+            nums[++i] = nums[j]
+        }
+    }
+    nums.length = i + 1
+    return i + 1
+}
+var answer =  removeDuplicates([0,0,1,1,1,2,2,3,3,4])
+console.log(answer)
+
+</script>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+// 1
+var replaceSpace = function(s) {
+    return s.replace(/ /g, '%20')
+};
+
+// 2
+var replaceSpace2 = function(s) {
+    let arr = s.split('')
+    for(let i = 0; i < arr.length; i++) {
+        if(arr[i] === ' ') {
+            arr[i] = '%20'
+        }
+    }
+    return arr.join('')
+}
+
+// 3 双指针
+var replaceSpace3 = function(s) {
+    let len = s.length - 1
+    let arr = s.split('')
+    let count = 0
+    for(item of arr) {
+        if (item === ' ') {
+            count++
+        }
+    } 
+    arr.length = s.length + 2 * count
+    for(let i = len, j = arr.length - 1; i < j; i--, j--) {
+        if(arr[i] !== ' ' ) {
+            arr[j] = arr[i]
+        } else {
+            // 找到空格，需要替换
+            arr[j-2] = '%'
+            arr[j-1] = '2'
+            arr[j] = '0'
+            j -= 2
+        }
+    }
+    return arr.join('')
+
+};
+
+
+var answer =  replaceSpace3("We are happy.")
+console.log(answer)
+
+</script>
+</html>
