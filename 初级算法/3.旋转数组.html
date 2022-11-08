@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+// 1. 多次执行入栈出栈操作
+var rotate = function(nums, k) {
+    // 1.1 for 循环
+    //   for(let i = 0; i < k; i++) {
+    //       nums.unshift(nums[nums.length - 1])
+    //       nums.pop()
+    //    }
+    //    return nums
+    // 1.2 while循环
+    let i = 0
+    while (i < k ) {
+        nums.unshift(nums[nums.length - 1])
+        nums.pop()
+        i++
+    }
+    return nums
+}
+// 2.定义一个空数组处理
+var rotate2 = function(nums, k) {
+    const n = nums.length
+    const newArr = new Array(n)
+    for(let i = 0; i < n; i++) {
+        newArr[(i + k) % n] = nums[i]
+    }
+    for(let i = 0; i < n; i++) {
+        nums[i] = newArr[i]
+    }
+    return nums
+}
+// 3. 数组翻转
+var rotate3 = function(nums, k) {
+    // nums.reverse();
+    // let leftArr = nums.slice(0, k)
+    // let rightArr = nums.slice(k, nums.length)
+    // leftArr.reverse()
+    // rightArr.reverse()
+    // let newArr = leftArr.concat(rightArr)
+    // for(let i = 0; i< newArr.length; i++) {
+    //     nums[i] = newArr[i]
+    // }
+    // return newArr
+    k %= nums.length
+    reverse(nums, 0, nums.length - 1);
+    reverse(nums, 0, k - 1);
+    reverse(nums, k, nums.length - 1)
+    return nums
+}
+
+const reverse = (nums, start, end) => {
+    while(start < end) {
+        const temp = nums[start]
+        nums[start] = nums[end]
+        nums[end] = temp
+        start += 1
+        end -= 1
+    }
+}
+
+var answer = rotate3([1,2], 3)
+console.log(answer)
+
+</script>
+</html>

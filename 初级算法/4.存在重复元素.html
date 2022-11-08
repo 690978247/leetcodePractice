@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+// 1.利用对象key值唯一来判断  (map 结构会更快一点, set ???)
+var containsDuplicate = function(nums) {
+    const obj = {}
+    let flag = false
+    nums.forEach(item => {
+        if (item in obj) {
+            flag = true
+        } else {
+            obj[item] = 1
+        }
+    })
+    return flag
+};
+
+// 数组从小到大排序，判断相邻的两个值是否相相同
+var containsDuplicate2 = function(nums) {
+    nums = nums.sort((a,b) => a-b)
+    console.log(nums)
+    for(let i = 0; i < nums.length; i++) {
+        if (nums[i] === nums[i+1]) {
+            return true
+        }
+    }
+    return false
+};
+
+var answer = containsDuplicate2([1,2,3,1])
+console.log(answer)
+
+</script>
+</html>
