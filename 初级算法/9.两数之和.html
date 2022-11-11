@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+// 1.两个循环 暴力遍历解法
+var twoSum = function(nums, target) {
+  for(let i = 0; i < nums.length; i++) {
+    for(let j = i + 1; j < nums.length; j++) {
+      if(nums[i] + nums[j] === target){
+        return /* [nums[i] ,nums[j] ] */ [i, j]
+      }
+    }
+  }
+};
+
+// 2. 哈希表
+var twoSum2 = function(nums, target) {
+  const map = new Map();
+  for(let i = 0; i < nums.length; i++) {
+    debugger
+    const item = nums[i]
+    if(map.has(item)) {
+      return [map.get(item), i]
+    }
+    map.set(target - item, i)
+  }
+}
+
+var answer = twoSum2([3,2,4], 6)
+console.log(answer)
+
+</script>
+</html>

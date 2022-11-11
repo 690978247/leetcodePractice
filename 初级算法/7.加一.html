@@ -14,25 +14,29 @@ var plusOne = function(digits) {
     // for(let i = 0; i < digits.length; i ++) {
     //     if(digits[1])
     // }
+    // 从传入的数组的尾部开始计算
     let i = digits.length - 1
     while (i >= 0) {
-        debugger
     if (digits[i] + 1 >= 10) {
+      // 1.如果数组最后一位数为9（大于等于10） 则将当前值改为0 进入下一层循环
       digits[i] = 0;
       if (i == 0) {
+        // 1.1 处理边界下标为0时，数字值为9的情况 如果数组下标为0且只为9 则将当前值改为0数组头部插入1
         digits.unshift(1);
       }
     } else {
+      // 2. 如果数组最后一位数不为9， 则直接加一 返回数组
       digits[i] += 1;
       return digits;
     }
+    // 1.2 进入下一层循环
     i--;
   }
   return digits;
 };
 
 
-var answer = plusOne([6,1,4,5,3,9,0,1,9,5,1,8,6,7,0,5,5,4,3])
+var answer = plusOne([6,1,4,5,3,9,0,1,9,5,1,8,6,7,0,5,5,4,9])
 console.log(answer)
 
 </script>
