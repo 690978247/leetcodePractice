@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+// 使用reverse
+var reverseString = function(s) {
+  return s.reverse();
+};
+
+// 使用双指针
+var reverseString2 = function(s) {
+    for(let i = 0, j = s.length -1; j > i; i++, j--) {
+        // let temp = s[i]
+        // s[i] = s[j]
+        // s[j] = temp
+        
+        // es6换位
+        [s[i],s[j]] = [s[j], s[i]]
+    }
+    return s
+};
+
+var answer = reverseString2(["h","e","l","l","o"])
+console.log(answer)
+
+</script>
+</html>
