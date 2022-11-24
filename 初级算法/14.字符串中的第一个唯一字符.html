@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+ 
+//  哈希表
+var firstUniqChar = function(s) {
+    const position = new Map()
+    const n = s.length
+    for(let [i, item] of [...s].entries()) {
+        if (position.has(item)) {
+            // map对象中存在该数据
+            position.set(item, -1)
+        } else {
+            // map对象中没有该数据
+            position.set(item, i)
+        }
+    }
+    let first = n
+    for(let pos of position.values()) {
+        if (pos !== -1 /* && pos < first  */) {
+            first = pos
+            // 此处可以使用break 替换调 pos< first判断
+            break
+        }
+    }
+
+    if (first === n) {
+        first = -1
+    }
+
+    return first
+
+};
+
+// 队列
+var firstUniqChar2 = function(s) {
+    const map = new Map()
+    const arr = []
+    const n = s.length
+    for(let [i, item] of [...s].entries()) {
+        if(!map.has(item)) {
+            // map对象没有该数据
+            map.set(item, i)
+            arr.push([s[i], i])
+        } else {
+            // map对象中存在该数据
+            map.set(item, -1)
+            while(arr.length && map.get(arr[0][0]) === -1) {
+                arr.shift()
+            }
+        }
+    }
+
+    return arr.length ? arr[0][1] : -1
+
+};
+
+// indexOf、lastIndexOf
+// 只要第一个和最后一个的索引一致，那肯定是只有这个是对的了
+var firstUniqChar3 = function(s) {
+    for(let i=0;i<s.length;i++){
+        if(s.lastIndexOf(s[i])===s.indexOf(s[i])){
+             return i
+        }
+    }
+    return -1
+};
+
+var answer = firstUniqChar3("aabb")
+console.log(answer)
+
+</script>
+</html>

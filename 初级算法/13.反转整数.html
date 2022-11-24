@@ -48,15 +48,32 @@ var reverse2 = function(x) {
     
     let count = 0
     while(x !== 0) {
-        debugger
         let digit = x % 10
         x = ~~(x / 10)
         count = count * 10 + digit
+        if (count < -(2**31) || count > (2**31) - 1 ) {
+            return 0
+        }
     }
     return count
+
+
+    // let count = 0
+    // for(;x !==0;) {
+    //     let digit = x % 10
+    //     // (1/2/3/4/5/6/7/8/9) / 10 = 0
+    //     // ~~取反
+    //     x = ~~(x / 10)   
+    //     debugger
+    //     console.log('aaaaaaaaaaaaaaa', x)
+    //     count = count * 10 + digit
+    // }
+    // if (count > (2**31) - 1) return 0
+    // if (count < -(2**31)) return 0
+    // return count
 };
 
-var answer = reverse2(123)
+var answer = reverse2(-459)
 console.log(answer)
 
 </script>
