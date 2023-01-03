@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+var longestCommonPrefix = function(strs) {
+    // 边界判断
+    if(strs.length === 0) return ''
+    // 先获取strs中的第一个的值
+    let ans = strs[0]
+    let i = 1
+    while(i < strs.length) {
+        // 注： indexOf(ans) !== 0 而不是 不等于 -1 0是查找的首位
+        while(strs[i].indexOf(ans) !== 0) {
+            // 不存在就一直截取直到找到
+            ans = ans.substring(0, ans.length - 1)
+        }
+        i++
+    }
+    return ans
+};
+
+// 盗来的答案
+var longestCommonPrefix2 = function(strs) {
+    if(strs.length == 0) 
+        return "";
+    let ans = strs[0];
+    for(let i =1;i<strs.length;i++) {
+        let j=0;
+        for(;j<ans.length && j < strs[i].length;j++) {
+            if(ans[j] != strs[i][j])
+                break;
+        }
+        ans = ans.substr(0, j);
+        if(ans === "")
+            return ans;
+    }
+    return ans;
+};
+
+var answer = longestCommonPrefix(["c","acc","ccc"])
+console.log(answer)
+
+</script>
+</html>

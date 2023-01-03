@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+ 
+//  排序法
+var isAnagram = function(s, t) {
+    if (s.length !== t.length) return false
+    console.log([...s].sort().join(''))
+    console.log([...t].sort().join(''))
+};
+
+// 哈希表
+var isAnagram2 = function(s, t) {
+    if (s.length !== t.length) return false
+    const table = new Array(26).fill(0)
+    for (let i = 0; i < s.length; i++) {
+        table[s.codePointAt(i) - 'a'.codePointAt(0)]++
+    }
+    for (let i = 0; i < t.length; i++) {
+        table[t.codePointAt(i) - 'a'.codePointAt(0)]--
+        if (table[t.codePointAt(i) - 'a'.codePointAt(0)] < 0) {
+            return false
+        }
+    }
+    return true
+};
+var answer = isAnagram2('anagram', 'nagaram')
+console.log(answer)
+
+</script>
+</html>
