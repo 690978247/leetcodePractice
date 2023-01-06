@@ -7,22 +7,26 @@
     <title>Document</title>
 </head>
 <body>
-    
 </body>
 <script>
-// 1.
+    // 快慢指针
 var removeDuplicates = function(nums) {
-    if (nums === null || nums.length === 0) return 0
-    let i = 0
-    for(j = 1; j < nums.length; j++ ) {
-        if (nums[i] !== nums[j]) {
-            nums[++i] = nums[j]
-        }
+ let slow = 0 // 慢指针
+ for(let i = 1; i < nums.length; i++) {
+    // i 为快指针
+    if (nums[i] !== nums[i - 1]) {
+        slow++
+        nums[slow] = nums[i]
     }
-    nums.length = i + 1
-    return nums
+ }  
+ nums.length = slow + 1
+ return nums
 }
-var answer =  removeDuplicates([0,0,1,1,1,2,2,3,3,4])
+
+var removeDuplicates2 = function(nums) {
+}
+
+var answer = removeDuplicates([0,0,1,1,1,2,2,3,3,4])
 console.log(answer)
 
 </script>
